@@ -8,12 +8,6 @@ FaceFusion
 ![License](https://img.shields.io/badge/license-OpenRAIL--AS-green)
 
 
-Preview
--------
-
-![Preview](https://raw.githubusercontent.com/facefusion/facefusion/master/.github/preview.png?sanitize=true)
-
-
 Installation
 ------------
 
