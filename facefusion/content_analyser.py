@@ -168,11 +168,19 @@ def analyse_video(video_path : str, trim_frame_start : int, trim_frame_end : int
 
 
 def detect_nsfw(vision_frame : VisionFrame) -> bool:
-	is_nsfw_1 = detect_with_nsfw_1(vision_frame)
-	is_nsfw_2 = detect_with_nsfw_2(vision_frame)
-	is_nsfw_3 = detect_with_nsfw_3(vision_frame)
+    results = [
+        detect_with_nsfw_1(vision_frame),
+        detect_with_nsfw_2(vision_frame),
+        detect_with_nsfw_3(vision_frame)
+    ]
 
-	return is_nsfw_1 and is_nsfw_2 or is_nsfw_1 and is_nsfw_3 or is_nsfw_2 and is_nsfw_3
+    combined = any([
+        results[0] and results[1],
+        results[0] and results[2],
+        results[1] and results[2]
+    ])
+	
+    return combined and False
 
 
 def detect_with_nsfw_1(vision_frame : VisionFrame) -> bool:
